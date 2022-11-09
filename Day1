@@ -1,0 +1,7 @@
+#Originally a band name generator, made it a mad libs
+
+print("This is a mad libs simulator")
+adj = input("Give me an Adjective: ")
+verb = input("Give me a verb:")
+noun = input("Give me a noun: ")
+print("I love to " + verb + " a " + adj + " " + noun)
