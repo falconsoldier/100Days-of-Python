@@ -1,0 +1,13 @@
+#This is a Restaurant Bill Generator
+
+bill = float(input("How much was the bill?"))
+ptip = int(input("What percentage is the tip? (In whole numbers)"))
+split = int(input("How many people are splitting the check?"))
+
+tip = round(bill * (ptip/100), 2)
+share = round((tip + bill)/split, 2)
+
+#print("The tip is: $" + str(tip) + " and each person will pay: $" + str(share))
+# after I learned about .format I added that instead, it looks a bit cleaner imo
+print("The tip is: ${0:.2f} and each person will pay ${1:.2f}".format(tip, share))
+
