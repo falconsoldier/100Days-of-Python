@@ -1,0 +1,16 @@
+# ifelse option chain
+#Game of Life
+
+edu = (input("Do you work hard in school Y/N: "))
+
+if edu == 'Y':
+    print("Good Job! You got into a good college and had a fun time")
+    mar = (input("Do you get married Y/N: "))
+    if mar == 'Y':
+        print("You have a happy and fulfilling life")
+    else:
+        print("You find solice in your hobbies and have a happy and fulfilling life")
+elif edu == 'N':
+    print("Although you didn't excel in school, you made good friends and had a happy and fulfilling life")
+else:
+    print("Please answer the question with Y or N")
