@@ -1,0 +1,30 @@
+import random
+
+compootermove = random.randrange(0, 3)
+# <1 is rock <2 is scissor <3 is paper
+
+yourmove = input("Rock, Paper, Scissors?")
+
+if yourmove.lower() == 'rock':
+    if compootermove < 1:
+        print("Tie, play again while I figure out how to call this function inside itself, I studied Java in school")
+    elif compootermove < 2:
+        print("You win")
+    elif compootermove < 3:
+        print("You Love. Sorry, You love to lose")
+elif yourmove.lower() == 'scissor' or yourmove.lower() == 'scissors':
+    if compootermove < 1:
+        print("you lose")
+    elif compootermove < 2:
+        print("you tie")
+    elif compootermove < 3:
+        print("You win")
+elif yourmove.lower() == 'paper':
+    if compootermove < 1:
+        print("You win")
+    elif compootermove < 2:
+        print("You lose")
+    elif compootermove < 3:
+        print("You tie")
+else:
+    print("You did not enter a valid option")
