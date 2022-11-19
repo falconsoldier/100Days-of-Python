@@ -1,0 +1,14 @@
+def Text_Builder():
+    ret = ''
+    inter = ('why', 'what', 'when', 'how', 'who', 'where')
+    while True:
+        some = input("Say Something: ")
+        if some.lower() == 'end':
+            break
+        if some.lower().startswith(inter): #or some[0:2].lower() == 'how' or some[0:3].lower() == 'when' or some[0:2].lower() == 'who' or some[0:3].lower() == 'what' or some[0:3].lower() == 'where':
+            ret = ret + some.capitalize() + '? '
+        else:
+            ret = ret + some.capitalize() + '. '
+        print(ret)
+    print(ret)
+Text_Builder()
