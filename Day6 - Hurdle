@@ -1,0 +1,18 @@
+#This one was very easy to brute force
+
+i = 1
+
+while i <7:
+    move()
+    turn_left()
+    move()
+    turn_left()
+    turn_left()
+    turn_left()
+    move()
+    turn_left()
+    turn_left()
+    turn_left()
+    move()
+    turn_left()
+    i+=1
