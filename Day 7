@@ -1,0 +1,66 @@
+def picklet(word1, g):
+    guess = str(input("Pick a letter: "))
+    if len(guess) > 1 or len(guess) < 1:
+        print("Please pick one letter")
+        a = picklet(word1, g)
+        return a
+    if guess in g:
+        print("You Guessed that Already")
+        a = picklet(word1, g)
+        return a
+    else:
+        return guess
+    
+
+def pickword():
+    import random
+
+    word_list = ['triangle', 'abnormal', 'static', 'weather', 'tonic']
+    word_chosen = random.choice(word_list)
+    return word_chosen
+    
+
+
+def hangman():
+    print('Welcome To Hangman')
+    wc = pickword()
+    guessblock = ' '
+    hc = 5
+    wce = 0
+    guesses = []
+    end_of_game = False
+
+
+    for x in range(0, len(wc), +1):
+        guessblock += '_ '
+    print(guessblock)
+
+
+    while not end_of_game:
+        let = picklet(wc, guesses)
+        guesses.append(let)
+        if wc.find(let) == -1:
+            hc -= 1
+            print("You have "+ str(hc) + " Lives Left")
+            if hc == 0:
+                end_of_game = True
+                print("You Lose")
+        else:
+            let = str(let)
+            while wc.find(let) != -1:
+                loc = (wc.find(let)+1)
+                guessblock = guessblock[:(loc*2)-1] + let+ guessblock[loc*2:]
+                wc = wc[:(loc-1)]+'0' +wc[loc:]
+                wce += 1
+            print("Nice Job!")
+            print(guessblock)
+            if wce == len(wc):
+                print("You Win")
+                end_of_game = True
+            
+            
+    
+
+
+
+hangman()
