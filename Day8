@@ -1,0 +1,64 @@
+def choice1():
+    ch1 = (input("Type E for Encrypt or D for Decrypt: ")).lower()
+    if (ch1 != 'e') and (ch1 != 'd'):
+        ch1 = choice1()
+        return
+    return ch1
+
+def choice2():
+    num = input("Please enter your number (1-26): ")
+    try:
+        val = int(num)
+    except ValueError:
+        print("That's not an number/integer!")
+        num = choice2()
+        return num
+    return num
+
+def encode():
+    import random
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    mes = input("Please type your secret message: ")
+    nm = ''
+    if len(mes) > 25:
+        print("Please try again with a shorter message")
+        encode()
+        return
+    sc = input("Do you have a preferred cypher number? Y/N: ")
+    if sc.lower() == 'y':
+        num = int(choice2())
+    else:
+        num = random.randint(1,26)
+    for char in mes:
+        if mes.isalpha():
+            pos = alphabet.index(char)
+            nm += alphabet[pos+num]
+        else:
+            nm += char
+    print("Your coded message is: ", nm, "And your cyper number is: ", num)
+
+def decode():
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    nm = ''
+    print("You must know your secret number")
+    num = int(choice2())
+    mes = input("Please type your secret message: ")
+    for char in mes:
+        if mes.isalpha():
+            pos = alphabet.index(char)
+            nm += alphabet[pos-num]
+        else:
+            nm += char
+    print("Your secret message is: ", nm)
+
+
+def cypher():
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    print("Welcome to the cypher program")
+    print("Would you like to Encrypt or Decrypt your message?")
+    ch1 = choice1()
+    if ch1 == 'e':
+        encode()
+    else:
+        decode()
+cypher()
