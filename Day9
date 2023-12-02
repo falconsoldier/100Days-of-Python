@@ -1,0 +1,35 @@
+def yn():
+    ans = input("Y/N: ")
+    if ans.lower() != 'y' and ans != 'n':
+        return yn()
+    else:
+        return ans.lower()
+
+def nbidder():
+    b = {}
+
+    return b
+
+
+
+def bidding_war():
+    bids = {}
+    auction = True
+    print("The Auction is now open")
+    
+    
+    while auction:
+        print("Are there any more bids?")
+        ans = yn()
+        if ans == 'y':
+            name = input("What is the bidder name?: ")
+            price = int(input("How much is the bid?: "))
+            bids[name] = price
+        else:
+            print("The Auction has now closed")
+            print("The winner was " + max(bids)+ ' with a bid of ' + str(max(bids.values())))
+            auction = False
+
+
+
+bidding_war()
