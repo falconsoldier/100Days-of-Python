@@ -5,9 +5,12 @@ def subtract(n, m):
 def multiply(n, m):
     return n*m
 def divide(n, m):
-    return n/m
-
-
+    try:
+        ans = n/m
+    except ZeroDivisionError:
+        m = float(input("You cannot divide by zero, please select a different number: "))
+        return divide(n,m)
+    return ans
 
 def calc():
     ops = {'+': add, '-': subtract, '*': multiply, '/': divide}
