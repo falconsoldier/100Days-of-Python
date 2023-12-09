@@ -1,18 +1,72 @@
-def playround(rdeck):
-    return 1
+def playround(rdeck, sdeck):
+    import random
+    player_hand = []
+    comp_hand = []
+    score = 0
+    cscore = 0
+    #ndeck = rdeck
+    #handdealt = random.sample(range(0,len(rdeck)),4) #Change of plan, I couldn't figure out how to take out the sample from the population lol
+    #Or rather I found .shuffle first
+    #random.shuffle(rdeck)
+    print("You were dealt a", rdeck[0], "and a", rdeck[1])
+    print("The dealer was dealt a", rdeck[2])
+    player_hand = rdeck[0:2]
+    print(player_hand)
+    score = sdeck[rdeck[0]] + sdeck[rdeck[1]]
+    cscore = sdeck[rdeck[2]] + sdeck[rdeck[3]]
+    print(score)
+    ndeck = rdeck[4:]
+
+    while True:
+        while True:
+            print("Do you wnat to hit?")
+            ans = input("Y/N: ")
+            if ans.lower() == 'y' or ans.lower() == 'n':
+                break
+            else:
+                print("Please answer the questions")
+        if ans.lower() == 'n':
+            break   
+        else:
+            print("You drew a ", ndeck[0])
+            score += sdeck[ndeck[0]]
+            print("You have ",score)
+            ndeck = ndeck[1:]
+            if score > 21:
+                print("You bust you lose")
+                return 1
+    print("The Computer has ", cscore)
+    while True:    
+        if cscore > 21:
+            print("The Computer loses") 
+            return ndeck
+        elif cscore < 16:
+            print("Computer drew a ", ndeck[0])
+            cscore += sdeck[ndeck[0]]
+            print("It has ",score)
+            ndeck = ndeck[1:]
+        else: 
+            break
+    if score > cscore:
+        print("You won this round with ", score)
+    else
+        print("You lost this round")
+
+            
+
+    return ndeck
 
 
 def main():
-    sdeck = {"One": 1, "Two": 2, "Three":3, "Four": 4, "Five":5, "Six":6, "Seven":7,"Eight":8,"Nine":9,"Ten":10, "Jack": 10, "Queen":10,"King":10,"Ace":11}
+    sdeck = {"Two": 2, "Three":3, "Four": 4, "Five":5, "Six":6, "Seven":7,"Eight":8,"Nine":9,"Ten":10, "Jack": 10, "Queen":10,"King":10,"Ace":11}
     rdeck = []
-    d = setup()
+    d = setup()*4
     print("The number of decks will be ",d)
     for x in range(d):
         rdeck += list(sdeck.keys())
     print(rdeck)
     while True:
-        playround(rdeck)
-        #ans = input("blblbl")
+        playround(rdeck, sdeck)
         while True:
             print("Do you wnat to keep playing?")
             ans = input("Y/N: ")
@@ -38,4 +92,10 @@ def setup():
             print("Please enter a number")
     return decks
 
-main()
+
+
+sdeck = {"Two": 2, "Three":3, "Four": 4, "Five":5, "Six":6, "Seven":7,"Eight":8,"Nine":9,"Ten":10, "Jack": 10, "Queen":10,"King":10,"Ace":11}
+rdeck = []
+for x in range(4):
+    rdeck += list(sdeck.keys())
+playround(rdeck, sdeck)
