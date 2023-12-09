@@ -7,12 +7,12 @@ def playround(rdeck, sdeck):
     #ndeck = rdeck
     #handdealt = random.sample(range(0,len(rdeck)),4) #Change of plan, I couldn't figure out how to take out the sample from the population lol
     #Or rather I found .shuffle first
-    #random.shuffle(rdeck)
+    random.shuffle(rdeck)
     print("You were dealt a", rdeck[0], "and a", rdeck[1])
     print("The dealer was dealt a", rdeck[2])
     player_hand = rdeck[0:2]
-    print(player_hand)
     score = sdeck[rdeck[0]] + sdeck[rdeck[1]]
+    comp_hand = rdeck[2:4]
     cscore = sdeck[rdeck[2]] + sdeck[rdeck[3]]
     print(score)
     ndeck = rdeck[4:]
@@ -30,26 +30,34 @@ def playround(rdeck, sdeck):
         else:
             print("You drew a ", ndeck[0])
             score += sdeck[ndeck[0]]
-            print("You have ",score)
             ndeck = ndeck[1:]
             if score > 21:
-                print("You bust you lose")
-                return 1
+                if "Ace" in player_hand:
+                    score = score -10
+                    player_hand.remove("Ace")
+                else:
+                    print("You bust you lose")
+                    return ndeck
+            print("You have ", score)
     print("The Computer has ", cscore)
     while True:    
         if cscore > 21:
-            print("The Computer loses") 
-            return ndeck
-        elif cscore < 16:
+            if "Ace" in comp_hand:
+                cscore = cscore-10
+                comp_hand.remove("Ace")
+            else:
+                print("The Computer loses") 
+                return ndeck
+        if cscore < 16:
             print("Computer drew a ", ndeck[0])
             cscore += sdeck[ndeck[0]]
-            print("It has ",score)
+            print("It has ",cscore)
             ndeck = ndeck[1:]
         else: 
             break
     if score > cscore:
         print("You won this round with ", score)
-    else
+    else:
         print("You lost this round")
 
             
