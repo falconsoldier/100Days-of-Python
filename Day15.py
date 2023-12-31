@@ -37,7 +37,8 @@ resources = {
     "mang" : 500,
     "kiwi" : 500,
     "yog" : 500,
-    "milk" : 500
+    "milk" : 500,
+    "money": 0
 }
 
 def cs(ch):
@@ -56,11 +57,52 @@ def ded(ch):
         resources[ing] -= MENU[ch]['ingredients'][ing]
     
 def cr():
-    print(resources)
+    print(f'Ban: {resources["ban"]} grams')
+    print(f'Straw: {resources["straw"]} grams')
+    print(f'Mang: {resources["mang"]} grams')
+    print(f'Kiwi: {resources["kiwi"]} grams')
+    print(f'Yog: {resources["yog"]} grams')
+    print(f'Milk: {resources["milk"]} militers')
+    print(f'Money: {resources["money"]} dollars')
 
-def payment():
-    return 1
-    
+def payment(c):
+    print(f"Payment due is {c}")
+    print("Please insert coins: ")
+    while True:
+        while True:
+            try:
+                qtr = int(input("Quarters: "))
+                break
+            except:
+                print("You must enter an int")
+        while True:
+            try:
+                dme = int(input("Dimes: "))
+                break
+            except:
+                print("You must enter an int")            
+        while True:
+            try:
+                nck = int(input("Nickles: "))
+                break
+            except:
+                print("You must enter an int")
+        while True:
+            try:
+                pnn = int(input("Pennies: "))
+                break
+            except:
+                print("You must enter an int")
+        total = round((qtr*.25)+(dme*.1)+(nck*.05)+(pnn*.01), 2)
+        if total < c:
+            print("You need more coins")
+        else:
+            break
+    if total > c:
+        floating_point_BS = round(total-c, 2)
+        print(f"Your change is {floating_point_BS}")
+    resources["money"] += total
+    return
     
     
     
