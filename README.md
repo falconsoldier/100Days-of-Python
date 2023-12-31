@@ -3,4 +3,8 @@ Udemy's 100 days of python
 
 
 The begining is just loops and if, else.
-Day 9 has some basic dictionary, Day 7 has a hangman game looping through characters.
+
+Days 1-10
+Super basic, if/or, for loops, ints and floats, basic dictionaries
+Day 7 has a hangman game that I found a bit more tricky
+Day 10 has formatting
