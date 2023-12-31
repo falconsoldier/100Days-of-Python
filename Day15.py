@@ -58,6 +58,8 @@ def ded(ch):
 def cr():
     print(resources)
 
+def payment():
+    return 1
     
     
     
