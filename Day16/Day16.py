@@ -1,45 +1,6 @@
-MENU = {
-    #Ban Straw
-    "A": {
-        "ingredients": {
-            "ban": 100,
-            "straw": 100,
-            "yog": 50,
-            "milk": 50,
-        },
-        "cost": 1.5,
-    },
-    #Mang Ban
-    "B": {
-        "ingredients": {
-            "mang": 100,
-            "ban": 150,
-            "yog": 75,
-            "milk": 25
-        },
-        "cost": 2.5,
-    },
-    #Kiwi Straw
-    "C": {
-        "ingredients": {
-            "straw": 150,
-            "kiwi": 75,
-            "yog": 80,
-            "milk": 20
-        },
-        "cost": 3.0,
-    }
-}
+from Smoothie_machine import Machine
+from Menu import Menu, MenuItem
 
-resources = {
-    "ban" : 500,
-    "straw" : 500,
-    "mang" : 500,
-    "kiwi" : 500,
-    "yog" : 500,
-    "milk" : 500,
-    "money": 0
-}
 
 def cs(ch):
     print("That costs: ", MENU[ch]["cost"])
@@ -56,14 +17,6 @@ def ded(ch):
     for ing in MENU[ch]['ingredients']:
         resources[ing] -= MENU[ch]['ingredients'][ing]
     
-def cr():
-    print(f'Ban: {resources["ban"]} grams')
-    print(f'Straw: {resources["straw"]} grams')
-    print(f'Mang: {resources["mang"]} grams')
-    print(f'Kiwi: {resources["kiwi"]} grams')
-    print(f'Yog: {resources["yog"]} grams')
-    print(f'Milk: {resources["milk"]} militers')
-    print(f'Money: {resources["money"]} dollars')
 
 def payment(c):
     print(f"Payment due is {c}")
@@ -109,11 +62,7 @@ def payment(c):
     
     
 def makedrink():   
-    print("Bananaa Strawbery smoothie click option: A")
-    print("Mango Banana smoothie click option: B")
-    print("Kiwi Strawberry smoothie click option: C")
-    print("To Chek resources click option: D")
-    choice = input("Which drink would you like?: ")
+
 
     b = False
     while b == False:
@@ -136,10 +85,7 @@ def makedrink():
 
 
 def main():
-    print("Powering up... ZIP ZAP ZOP")
-    print("I am Smoothie Machine Beep Boop")
-    print("I can make nana straw, mango ban, kiwi kiwi straw")
-    print("You're Welcome")
+
     
     maker = True
 
@@ -156,10 +102,63 @@ def main():
 
 
 
+def nmain():
+
+    menu = Menu()
+    mach = Machine()
+
+
+    print("Powering up... ZIP ZAP ZOP")
+    print("I am Smoothie Machine Beep Boop")
+    print("You're Welcome")
+    print("Enter 'OFF' to turn off the machine at any point")
+
+    on = True
+    while on:
+        print("Here is the menu:")
+        print(f"{menu.get_items()}")
+        print("To Check resources click option: Check")
+        choice = input("Which drink would you like?: ")
+        if choice.lower() == 'off':
+            break
+        if choice.lower() == 'check':
+            mach.report()
+        else:
+            item = menu.find_drink(choice)
+            cando = mach.is_resource_sufficient(item)
+
+        if cando == True:
+            mach.make_drink(item)
+            print("here you go!")
+    
+    
+    
+def nnmain():
+    menu = Menu()
+    mach = Machine()
+    item = menu.find_drink("Ban Straw")
+    print(item)
+    attributes_dict = vars(item)
+    print(attributes_dict)
+    mach.make_drink(item)
+
+
+nmain()
 
 
 
 
 
 
-main()
+
+    #item = menu.find_drink("Ban Straw")
+
+    #print(item)
+    #for sin in items:
+    #    mach.is_resource_sufficient(sin)
+    
+
+
+
+
+
