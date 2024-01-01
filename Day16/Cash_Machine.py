@@ -17,12 +17,10 @@ class Cash_Machine:
     def process(self, cost):
         print("Please enter payment")
         while True:
-           q = input("Quarters?")
-           d = input("Dimes?")
-           n = input("nickles?")
-           p = input("pennies?")
-           if q.lower == 'off' or d.lower == 'off' or n.lower == 'off' or p.lower == 'off':
-               return False
+           q = int(input("Quarters?"))
+           d = int(input("Dimes?"))
+           n = int(input("nickles?"))
+           p = int(input("pennies?"))
            total = (.25*q)+(.1*d)+(.05*n)+(.01*p)
            if total > cost:
               break
