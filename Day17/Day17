@@ -1,2 +1,28 @@
+from QuizBrain import QuizBrain as qb
+import json
+
+def jsonloader():
+    js_file_path = 'C:/Users/andre/Desktop/Python/100 Days/100Days-of-Python/day17/day17data.js'
+    with open(js_file_path, "r") as js_file:
+        jcd = js_file.read()
+    jcd = jcd.split('=')[1].strip() ### Have to rename variables
+    jc = json.loads(jcd)
+    return jc
+
 def main():
-    return 1
+    jc = jsonloader()
+    qb1 = qb(jc)
+
+    print("Welcome to Quiz Game")
+
+
+    while qb1.still_has_question():
+        qb1.qnum += 1
+        ans = qb1.question(jc[qb1.qnum])
+        if ans == jc[qb1.qnum]["answer"]:
+            qb1.score += 1
+        print(f"Your score is {qb1.score}")
+
+
+
+main()
