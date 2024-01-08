@@ -7,9 +7,11 @@ The begining is just loops and if, else.
 Days 1-10:
 
 
-Super basic, if/or, for loops, ints and floats, basic dictionaries
+Basic things, if/or, for loops, ints and floats, basic dictionaries
 Day 7 has a hangman game that I found a bit more tricky
 Day 10 has formatting
 
 
-Day 10-20:
+Day 11-20:
+
+More complicated dictionaries, reading JS files, Python classes, Turtle library
